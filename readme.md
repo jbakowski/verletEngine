@@ -1,4 +1,5 @@
 # verletEngine - simple physics engine
+[2024-05-19 19-46-31.webm](https://github.com/jbakowski/verletEngine/assets/96252496/287d5c4a-a0a3-4fea-a919-1ac60b4ccea4)
 ### How to build and run the project?
 
 You will need to install CMake.
