@@ -30,6 +30,8 @@ of the build directory.
 verletEngine utilizes Verlet's integration, which is a method used to perform discrete integration
 of Newton's equations of motion.
 
+This project uses SFML 2.6 to render the graphics.
+
 Currently supported features:
 - gravity
 - air resistance
