@@ -6,6 +6,9 @@
 #include <vector>
 #include <iostream>
 
+sf::Color rope = sf::Color(141, 81, 24);
+sf::Color white = sf::Color(255, 255, 255);
+
 int main () {
     float fps = 0.0f;
     uint32_t object_count = 0;
@@ -15,40 +18,40 @@ int main () {
 
     std::vector<std::shared_ptr<VerletObject>> verletObjects;
     // pendulum
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(500, 200), true));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(510, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(520, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(530, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(540, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(550, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(560, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(570, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(580, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(590, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(600, 200)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(610, 200)));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(500, 200), rope, true));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(510, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(520, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(530, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(540, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(550, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(560, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(570, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(580, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(590, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(600, 200), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(610, 200), rope));
 
     // net
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(800, 350), true));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(810, 360)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(820, 370)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(830, 380)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(840, 390)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(850, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(860, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(870, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(880, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(890, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(910, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(920, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(930, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(940, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(950, 400)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(960, 390)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(970, 380)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(980, 370)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(990, 360)));
-    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(1000, 350), true));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(800, 350), rope, true));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(810, 360), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(820, 370), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(830, 380), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(840, 390), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(850, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(860, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(870, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(880, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(890, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(910, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(920, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(930, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(940, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(950, 400), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(960, 390), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(970, 380), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(980, 370), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(990, 360), rope));
+    verletObjects.push_back(std::make_shared<VerletObject>(sf::Vector2f(1000, 350), rope, true));
 
     Solver solver(verletObjects);
 
@@ -98,7 +101,7 @@ int main () {
                 //std::cout << "x: " << event.mouseMove.x << " y: " << event.mouseMove.y << std::endl;
             }
             if (event.type == sf::Event::MouseButtonPressed) {
-                auto newVerlet = std::make_shared<VerletObject>(sf::Vector2f(event.mouseButton.x, event.mouseButton.y), false);
+                auto newVerlet = std::make_shared<VerletObject>(sf::Vector2f(event.mouseButton.x, event.mouseButton.y), white);
                 solver.addVerletObject(newVerlet);
             }
         }
@@ -112,7 +115,7 @@ int main () {
         for (const auto& verlObj : solver.objects) {
             sf::CircleShape shape(10);
             shape.setPosition(verlObj->getPosition());
-            shape.setFillColor(sf::Color::White);
+            shape.setFillColor(verlObj->color);
             window.draw(shape);
         }
         window.display();

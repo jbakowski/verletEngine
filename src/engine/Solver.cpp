@@ -21,7 +21,7 @@ void Solver::update(float dt) {
 
 void Solver::applyGravity() {
     std::for_each(this->objects.begin(), this->objects.end(), [](std::shared_ptr<VerletObject>& obj) {
-        obj->accelerate(sf::Vector2f(0.0f, 961.0f));
+        obj->accelerate(sf::Vector2f(0.0f, 5000.0f));
     });
 };
 
