@@ -13,7 +13,7 @@ class Solver {
         void applyGravity();
         void applyConstraint();
         void applyLinks();
-        void solveCollisions();
+        void solveCollisions(float dt);
         std::vector<std::shared_ptr<VerletObject>> objects;
         std::vector<Link> links;
         void addVerletObject(const std::shared_ptr<VerletObject>& obj);

@@ -35,5 +35,7 @@ This project uses SFML 2.6 to render the graphics.
 Currently supported features:
 - gravity
 - air resistance
+- linear and angular dynamics
+- friction
 - static, immovable, objects
 - links - objects that try to stay in a certain distance from each other
