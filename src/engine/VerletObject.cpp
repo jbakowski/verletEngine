@@ -14,11 +14,11 @@ const float frictionStaticMu = 0.7f;
 const float frictionKineticMu = 0.5f;
 
 
-VerletObject::VerletObject(const sf::Vector2f& position, sf::Color color, bool staticFlag, float mass, float radius) :
+VerletObject::VerletObject(const sf::Vector2f& position, sf::Color color, bool isStatic, float mass, float radius) :
                             position(position),
                             previousPosition(position),
                             acceleration(0.0f, 0.0f),
-                            isStatic(staticFlag),
+                            isStatic(isStatic),
                             mass(mass),
                             normalForce(0.0f),
                             angularPosition(0.0f),

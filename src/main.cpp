@@ -1,4 +1,6 @@
 #include <SFML/Graphics.hpp>
+#include <imgui-SFML.h>
+#include <imgui.h>
 #include <Link.hpp>
 #include <VerletObject.hpp>
 #include <Solver.hpp>
@@ -11,11 +13,22 @@ sf::Color rope = sf::Color(141, 81, 24);
 sf::Color white = sf::Color(255, 255, 255);
 std::vector<std::shared_ptr<VerletObject>> verletObjects;
 
+struct ObjectOptions {
+    bool isStatic;
+    float mass;
+    float radius;
+};
+
 int main () {
     float fps = 0.0f;
     uint32_t object_count = 0;
+    ObjectOptions obj_opt;
+    obj_opt.isStatic = false;
+    obj_opt.mass = 5.0f;
+    obj_opt.radius = 5.0f;
     std::string titleStr = "Verlet Physics Engine | Object count: " + std::to_string(object_count) + " | FPS: " + std::to_string(fps);
     sf::RenderWindow window(sf::VideoMode(1200, 800), titleStr);
+    ImGui::SFML::Init(window);
     sf::Clock simClock;
 
     for (int i = 0; i <= 11; i++) {
@@ -89,12 +102,15 @@ int main () {
         window.setTitle(titleStr);
         sf::Event event;
         while (window.pollEvent(event)) {
+            ImGui::SFML::ProcessEvent(event);
             if (event.type == sf::Event::Closed) {
                 window.close();
             }
             if (event.type == sf::Event::MouseButtonPressed) {
-                auto newVerlet = std::make_shared<VerletObject>(sf::Vector2f(event.mouseButton.x, event.mouseButton.y), white);
-                solver.addVerletObject(newVerlet);
+                if (event.mouseButton.y < 600) {
+                    auto newVerlet = std::make_shared<VerletObject>(sf::Vector2f(event.mouseButton.x, event.mouseButton.y), white, obj_opt.isStatic, obj_opt.mass, obj_opt.radius);
+                    solver.addVerletObject(newVerlet);
+                }
             }
         }
         float dt = simClock.restart().asSeconds();
@@ -102,17 +118,25 @@ int main () {
         object_count = solver.objects.size();
         solver.update(dt);
         window.clear();
-
+        ImGui::SFML::Update(window, sf::seconds(dt));
+        if (ImGui::CollapsingHeader("Object options")) {
+            ImGuiIO& io = ImGui::GetIO();
+            ImGui::Checkbox("Static object", &obj_opt.isStatic);
+            if (ImGui::SliderFloat("Object mass", &obj_opt.mass, 0.0f, 20.0f, "%.0f"));
+            if (ImGui::SliderFloat("Object radius", &obj_opt.radius, 0.0f, 20.0f, "%.0f"));
+        };
         // render particles
         for (const auto& verlObj : solver.objects) {
-            sf::RectangleShape shape (sf::Vector2f(8.0f, 8.0f));
-            shape.setOrigin(4.0f, 4.0f);
+            sf::RectangleShape shape (sf::Vector2f(verlObj->radius * 2, verlObj->radius * 2));
+            shape.setOrigin(verlObj->radius, verlObj->radius);
             shape.setPosition(verlObj->getPosition());
             shape.setRotation(verlObj->angularPosition * 180.0f / M_PI);
             shape.setFillColor(verlObj->color);
             window.draw(shape);
         }
+        ImGui::SFML::Render(window);
         window.display();
     }
+    ImGui::SFML::Shutdown();
     return 0;
 }

@@ -6,7 +6,7 @@ class VerletObject {
     public:
         VerletObject(const sf::Vector2f& position,
                     sf::Color color = sf::Color(255, 255, 255),
-                    bool staticFlag = false,
+                    bool isStatic = false,
                     float mass = 5.0f,
                     float radius = 5.0f
         );

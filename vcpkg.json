@@ -1,0 +1,9 @@
+{
+  "name": "verlet-engine",
+  "version": "1.0.0",
+  "dependencies": [
+    "imgui-sfml",
+    "sfml",
+    "imgui"
+  ]
+}
