@@ -18,8 +18,34 @@ class VerletObject {
         sf::Vector2f getPosition() const;
         void setPosition(const sf::Vector2f& position);
 
+        sf::Vector2f getPreviousPosition();
+        void setPreviousPosition(const sf::Vector2f& previousPosition);
+
+        bool getIsStatic() const;
+        void setIsStatic(bool isStatic);
+
+        float getNormalForce() const;
         void setNormalForce(const float normal);
 
+        float getMass() const;
+        void setMass(float mass);
+
+        float getRadius() const;
+        void setRadius(float radius);
+
+        float getAngularPosition() const;
+        void setAngularPosition(float angPos);
+
+        float getAngularVelocity() const;
+        void setAngularVelocity(float angVel);
+
+        float getMomentInertia() const;
+        void setMomentInertia(float moment);
+
+        sf::Color getColor() const;
+        void setColor(sf::Color);
+
+    private:
         sf::Vector2f position;
         sf::Vector2f previousPosition;
         sf::Vector2f acceleration;

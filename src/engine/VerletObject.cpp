@@ -8,7 +8,7 @@ const float airDensity = 2.5;
 const float dragCoef = 0.7f;
 const float crossSectionalArea = 2.5f;
 
-// friction constans
+// friction constants
 const float frictionVelocityThreshold = 0.1f;
 const float frictionStaticMu = 0.7f;
 const float frictionKineticMu = 0.5f;
@@ -28,7 +28,7 @@ VerletObject::VerletObject(const sf::Vector2f& position, sf::Color color, bool i
                             color(color),
                             radius(radius) {
                                 // artifically lower moment of inertia, because angular velocities are too low atm
-                                momentInertia = (0.5f * mass * radius * radius) / 1e6;
+                                momentInertia = (0.5f * mass * radius * radius) / 1e9;
                             }
 
 void VerletObject::update(float dt) {
@@ -89,6 +89,74 @@ void VerletObject::setPosition(const sf::Vector2f& position) {
     previousPosition = position;
 }
 
+sf::Vector2f VerletObject::getPreviousPosition() {
+    return previousPosition;
+}
+
+void VerletObject::setPreviousPosition(const sf::Vector2f& _previousPosition) {
+    previousPosition = _previousPosition;
+}
+
+float VerletObject::getNormalForce() const {
+    return normalForce;
+}
+
 void VerletObject::setNormalForce(const float normal) {
     normalForce = normal;
+}
+
+bool VerletObject::getIsStatic() const {
+    return isStatic;
+}
+
+void VerletObject::setIsStatic(bool _isStatic) {
+    isStatic = _isStatic;
+}
+
+float VerletObject::getMass() const {
+    return mass;
+}
+
+void VerletObject::setMass(float _mass) {
+    mass = _mass;
+}
+
+float VerletObject::getRadius() const {
+    return radius;
+}
+
+void VerletObject::setRadius(float _radius) {
+    radius = _radius;
+}
+
+float VerletObject::getAngularPosition() const {
+    return angularPosition;
+}
+
+void VerletObject::setAngularPosition(float angPos) {
+    angularPosition = angPos;
+}
+
+float VerletObject::getAngularVelocity() const {
+    return angularVelocity;
+}
+
+void VerletObject::setAngularVelocity(float _angVel) {
+    angularVelocity = _angVel;
+}
+
+float VerletObject::getMomentInertia() const {
+    return momentInertia;
+}
+
+void VerletObject::setMomentInertia(float moment) {
+    momentInertia = moment;
+}
+
+sf::Color VerletObject::getColor() const {
+    return color;
+}
+
+void VerletObject::setColor(sf::Color _color) {
+    color = _color;
 }

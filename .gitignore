@@ -3,3 +3,4 @@ bin/
 build/
 CMakeFiles/
 vcpkg_installed/
+notepad.md
